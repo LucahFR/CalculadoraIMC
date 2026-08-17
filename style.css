@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #120d3f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.hide {
+  display: none !important;
+}
+
+.imcContainer {
+  min-width: 400px;
+  min-height: 400px;
+  background-color: #1d1e33;
+  padding: 2rem;
+}
+
+#inputDados, h2{
+  text-align: center;
+  margin-bottom: 2rem;
+  color: aliceblue;
+}
+
+.dados {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.controleDados{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.controleDados label{
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+  color: #ccc;
+}
+
+.controleDados input{
+  padding: 1rem 0.5rem;
+}
+
+.acao{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+button{
+  text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  background-color: #f44236;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.9;
+  flex: 1;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+#resultado{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#resultado h3{
+  margin-top: 1rem;
+  color: #dfdfdf;
+}
+
+#imc{
+  font-size: 2.4rem;
+  margin-bottom: 0.6rem;
+}
+
+#imcinfo{
+  font-size: 1.4rem;
+  color: #ccc;
+}
+
+#tabelaImc h3{
+  margin-top: 1rem;
+  color: #dfdfdf;
+}
+
+#tabelaImc{
+  margin: 1.5rem 0;
+  font-size: 0.8rem;
+}
+
+.tabelaTexto{
+  font-weight: bold;
+  color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #444;
+  text-align: center;
+  flex: 1;
+}
+
+.tabelaTexto h4:nth-child(3){
+    max-width: 80px;
+}
+
+.tabelaLinha{
+  font-weight: bold;
+  color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #444;
+  text-align: center;
+  flex: 1;
+}
