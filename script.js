@@ -36,3 +36,17 @@ const dados = [
     obesidade: "III",
   },
 ];
+
+// Elementos
+
+const imcTabela = document.body.querySelector("#tabelaImc")
+const inputPeso = document.body.querySelector("#peso")
+const inputAltura = document.body.querySelector("#altura")
+const botaoCalculo = document.body.querySelector("#botaoCalcular")
+const dadosInput = document.body.querySelector("#inputDados")
+const resultado = document.body.querySelector("#resultados")
+const numeroImc = document.body.querySelector("#imcNumero span")
+const informacaoImc = document.body.querySelector("#imcInfo span")
+const voltarBotao = document.body.querySelector("#botaoVoltar")
+
+// Funções
