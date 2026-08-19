@@ -38,6 +38,7 @@ function calcular(){
   fim função 
 */
 }
+
 function mostrarResultado(imc, faixa){
   /* 
   preencher #imcNumero com o valor do imc (formatado)
