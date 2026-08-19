@@ -50,3 +50,24 @@ const informacaoImc = document.body.querySelector("#imcInfo span")
 const voltarBotao = document.body.querySelector("#botaoVoltar")
 
 // Funções
+
+function calcular(){
+  /* pegar altura e peso dos inputs
+  converter para número (substituindo vírgula por ponto)
+  se altura ou peso forem inválidos:
+    exibir mensagem de erro
+    parar (return)
+  fim se
+  imc = peso / (altura * altura)
+  faixa = procurar no array dados qual objeto corresponde ao imc
+  chamar mostrarResultado(imc, faixa)
+fim função */
+}
+function mostrarResultado(){
+  /* preencher #imcNumero com o valor do imc (formatado)
+  preencher #imcInfo com a classificação (faixa.info ou faixa.classificacao)
+  (opcional) gerar as linhas da tabela e destacar a linha da faixa
+  esconder #inputDados (adicionar classe .hide)
+  mostrar #resultado (remover classe .hide)
+fim função */
+}
