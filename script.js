@@ -48,4 +48,3 @@ function mostrarResultado(imc, faixa){
   fim função 
 */
 }
-/* testing git */
