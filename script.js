@@ -71,14 +71,25 @@ function calcular() {
 
 function mostrarResultado(imc, faixa){
   
-  inputDados.classList.add("hide")
-  resultados.classList.remove("hide")
   numeroImc.textContent = imc.toFixed(1)
   if (!faixa) {
     alert("IMC fora da tabela de classificação");
     return;
   }
   informacaoImc.textContent = faixa.info || faixa.classificacao
+  .map((item) => {
+  const destaque = item === faixa ? ' style="background-color: #ffff99;"' : "";
+  return `<tr${destaque}>
+            <td>${item.classificacao}</td>
+            <td>${item.info}</td>
+            <td>${item.obesidade}</td>
+          </tr>`;
+  })
+  .join("");
+
+  inputDados.classList.add("hide")
+  resultados.classList.remove("hide")
+  
 }
 
 botaoCalculo.addEventListener("click", calcular);
