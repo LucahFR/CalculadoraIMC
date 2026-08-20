@@ -30,7 +30,7 @@ const dados = [
   },
   {
     minimo: 40,
-    maximo: 99,
+    maximo: Infinity,
     classificacao: "Acima de 40",
     info: "Obesidade grave",
     obesidade: "III",
@@ -51,35 +51,38 @@ const voltarBotao = document.body.querySelector("#botaoVoltar")
 
 // Funções
 
-function calcular(){
-  inputPeso.value = inputPeso.value.replace(",", ".")
-  inputAltura.value = inputAltura.value.replace(",", ".")
-  const peso = Number(inputPeso.value)
-  const altura = Number(inputAltura.value)
+function calcular() {
+  const peso = Number(inputPeso.value.replace(",", "."));
+  const altura = Number(inputAltura.value.replace(",", "."));
 
-  if (peso <= 0 || altura <= 0 || isNaN(peso) || isNaN(altura)) {
-    alert("Peso ou altura inválidos")
-    return
-  } else if (peso > 635 || altura > 2.72) {
-    alert("Peso ou altura fora do limite")
-    return
-  } else if (peso < 2 || altura < 0.54) {
-    alert("Peso ou altura abaixo do limite")
-    return
+  if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+    alert("Peso ou altura inválidos");
+    return;
   }
-  
-  if (peso > 0 && altura > 0) {
-    const imc = peso / (altura * altura)
-    const faixa = dados.find((faixa) => imc >= faixa.minimo && imc <= faixa.maximo)
-    mostrarResultado(imc, faixa)
+  if (peso > 635 || altura > 2.72 || peso < 2 || altura < 0.54) {
+    alert("Valores fora dos limites aceitáveis");
+    return;
   }
+
+  const imc = peso / (altura * altura);
+  const faixa = dados.find(item => imc >= item.minimo && imc <= item.maximo);
+  mostrarResultado(imc, faixa);
 }
+
 function mostrarResultado(imc, faixa){
   
-  /* preencher #imcNumero com o valor do imc (formatado)
-  preencher #imcInfo com a classificação (faixa.info ou faixa.classificacao)
-  (opcional) gerar as linhas da tabela e destacar a linha da faixa
-  esconder #inputDados (adicionar classe .hide)
-  mostrar #resultado (remover classe .hide)
-fim função */
+  inputDados.classList.add("hide")
+  resultados.classList.remove("hide")
+  numeroImc.textContent = imc.toFixed(1)
+  if (!faixa) {
+    alert("IMC fora da tabela de classificação");
+    return;
+  }
+  informacaoImc.textContent = faixa.info || faixa.classificacao
 }
+
+botaoCalculo.addEventListener("click", calcular);
+voltarBotao.addEventListener("click", () => {
+  inputDados.classList.remove("hide");
+  resultados.classList.add("hide");
+});
