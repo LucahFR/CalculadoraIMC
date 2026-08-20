@@ -1,4 +1,5 @@
 // Dados gerais do IMC
+window.addEventListener("DOMContentLoaded", () => {
 const dados = [
   {
     minimo: 0,
@@ -39,15 +40,15 @@ const dados = [
 
 // Elementos
 
-const imcTabela = document.body.querySelector("#tabelaImc")
 const inputPeso = document.body.querySelector("#peso")
 const inputAltura = document.body.querySelector("#altura")
 const botaoCalculo = document.body.querySelector("#botaoCalcular")
-const dadosInput = document.body.querySelector("#inputDados")
+const inputDados = document.body.querySelector("#inputDados")
 const resultados = document.body.querySelector("#resultado")
-const numeroImc = document.body.querySelector("#imcNumero span")
+const numeroImc = document.body.querySelector("#imc span");
 const informacaoImc = document.body.querySelector("#imcInfo span")
 const voltarBotao = document.body.querySelector("#botaoVoltar")
+const linhasTabela = document.body.querySelector("#linhasTabela");
 
 // Funções
 
@@ -70,30 +71,34 @@ function calcular() {
 }
 
 function mostrarResultado(imc, faixa){
-  
-  numeroImc.textContent = imc.toFixed(1)
   if (!faixa) {
     alert("IMC fora da tabela de classificação");
     return;
   }
-  informacaoImc.textContent = faixa.info || faixa.classificacao
+
+  numeroImc.textContent = imc.toFixed(1)
+  informacaoImc.textContent = faixa.info || faixa.classificacao;
+  linhasTabela.innerHTML = dados
+
   .map((item) => {
-  const destaque = item === faixa ? ' style="background-color: #ffff99;"' : "";
-  return `<tr${destaque}>
-            <td>${item.classificacao}</td>
-            <td>${item.info}</td>
-            <td>${item.obesidade}</td>
-          </tr>`;
-  })
-  .join("");
+      const destaque = item === faixa ? 'class="destaque"' : "";
+      return `<div class="tabelaLinha ${destaque}">
+                <span>${item.classificacao}</span>
+                <span>${item.info}</span>
+                <span>${item.obesidade}</span>
+              </div>`;
+    })
+    .join("");
 
   inputDados.classList.add("hide")
   resultados.classList.remove("hide")
-  
+
 }
 
-botaoCalculo.addEventListener("click", calcular);
+
+  botaoCalculo.addEventListener("click", calcular);
 voltarBotao.addEventListener("click", () => {
   inputDados.classList.remove("hide");
   resultados.classList.add("hide");
+});
 });
