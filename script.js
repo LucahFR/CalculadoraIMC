@@ -52,18 +52,30 @@ const voltarBotao = document.body.querySelector("#botaoVoltar")
 // Funções
 
 function calcular(){
-  /* pegar altura e peso dos inputs
-  converter para número (substituindo vírgula por ponto)
-  se altura ou peso forem inválidos:
-    exibir mensagem de erro
-    parar (return)
-  fim se
-  imc = peso / (altura * altura)
-  faixa = procurar no array dados qual objeto corresponde ao imc
-  chamar mostrarResultado(imc, faixa)
-fim função */
+  inputPeso.value = inputPeso.value.replace(",", ".")
+  inputAltura.value = inputAltura.value.replace(",", ".")
+  const peso = Number(inputPeso.value)
+  const altura = Number(inputAltura.value)
+
+  if (peso <= 0 || altura <= 0 || isNaN(peso) || isNaN(altura)) {
+    alert("Peso ou altura inválidos")
+    return
+  } else if (peso > 635 || altura > 2.72) {
+    alert("Peso ou altura fora do limite")
+    return
+  } else if (peso < 2 || altura < 0.54) {
+    alert("Peso ou altura abaixo do limite")
+    return
+  }
+  
+  if (peso > 0 && altura > 0) {
+    const imc = peso / (altura * altura)
+    const faixa = dados.find((faixa) => imc >= faixa.minimo && imc <= faixa.maximo)
+    mostrarResultado(imc, faixa)
+  }
 }
-function mostrarResultado(){
+function mostrarResultado(imc, faixa){
+  
   /* preencher #imcNumero com o valor do imc (formatado)
   preencher #imcInfo com a classificação (faixa.info ou faixa.classificacao)
   (opcional) gerar as linhas da tabela e destacar a linha da faixa
