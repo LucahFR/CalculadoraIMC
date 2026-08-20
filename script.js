@@ -1,5 +1,5 @@
 // Dados gerais do IMC
-window.addEventListener("DOMContentLoaded", () => {
+
 const dados = [
   {
     minimo: 0,
@@ -95,10 +95,10 @@ function mostrarResultado(imc, faixa){
 
 }
 
-
+window.addEventListener("DOMContentLoaded", () => {
   botaoCalculo.addEventListener("click", calcular);
-voltarBotao.addEventListener("click", () => {
-  inputDados.classList.remove("hide");
-  resultados.classList.add("hide");
-});
+  voltarBotao.addEventListener("click", () => {
+    inputDados.classList.remove("hide");
+    resultados.classList.add("hide");
+  });
 });
