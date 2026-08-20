@@ -56,12 +56,8 @@ function calcular() {
   const peso = Number(inputPeso.value.replace(",", "."));
   const altura = Number(inputAltura.value.replace(",", "."));
 
-  if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+  if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0 || peso > 635 || altura > 2.72) {
     alert("Peso ou altura inválidos");
-    return;
-  }
-  if (peso > 635 || altura > 2.72 || peso < 2 || altura < 0.54) {
-    alert("Valores fora dos limites aceitáveis");
     return;
   }
 
@@ -94,6 +90,8 @@ function mostrarResultado(imc, faixa){
   resultados.classList.remove("hide")
 
 }
+
+// botão de cálculo e botão de voltar + DOMContentLoaded
 
 window.addEventListener("DOMContentLoaded", () => {
   botaoCalculo.addEventListener("click", calcular);
