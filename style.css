@@ -125,8 +125,8 @@ button:hover {
 }
 
 
-.destaque {
-  background-color: #ffff99;
+#destaque {
+  background-color: #ffff9925;
   font-weight: bold;
 }
 

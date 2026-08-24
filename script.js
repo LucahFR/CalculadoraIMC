@@ -31,7 +31,7 @@ const dados = [
   },
   {
     minimo: 40,
-    maximo: Infinity,
+    maximo: 635,
     classificacao: "Acima de 40",
     info: "Obesidade grave",
     obesidade: "III",
@@ -66,29 +66,28 @@ function calcular() {
   mostrarResultado(imc, faixa);
 }
 
-function mostrarResultado(imc, faixa){
+function mostrarResultado(imc, faixa) {
   if (!faixa) {
     alert("IMC fora da tabela de classificação");
     return;
   }
 
-  numeroImc.textContent = imc.toFixed(1)
+  numeroImc.textContent = imc.toFixed(1);
   informacaoImc.textContent = faixa.info || faixa.classificacao;
-  linhasTabela.innerHTML = dados
+  let html = "";
+  for (let i = 0; i < dados.length; i++) {
+    const item = dados[i];
+    const destaque = item === faixa ? 'id="destaque"' : "";
+    html += `<div class="tabelaLinha" ${destaque}>
+              <span>${item.info}</span>
+              <span>${item.classificacao}</span>
+              <span>${item.obesidade}</span>
+            </div>`;
+  }
+  linhasTabela.innerHTML = html;
 
-  .map((item) => {
-      const destaque = item === faixa ? 'class="destaque"' : "";
-      return `<div class="tabelaLinha ${destaque}">
-                <span>${item.classificacao}</span>
-                <span>${item.info}</span>
-                <span>${item.obesidade}</span>
-              </div>`;
-    })
-    .join("");
-
-  inputDados.classList.add("hide")
-  resultados.classList.remove("hide")
-
+  inputDados.classList.add("hide");
+  resultados.classList.remove("hide");
 }
 
 // botão de cálculo e botão de voltar + DOMContentLoaded
