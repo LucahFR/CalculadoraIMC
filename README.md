@@ -1,2 +1,2 @@
 # CalculadoraIMC
-17/08/2026 calculadora de IMC feita com HTML | CSS | Javascript - Owntec
+17/08/2026 -- 24/08/2026 calculadora de IMC feita com HTML | CSS | Javascript - Owntec
