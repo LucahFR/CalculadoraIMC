@@ -73,7 +73,7 @@ function mostrarResultado(imc, faixa) {
   }
 
   numeroImc.textContent = imc.toFixed(1);
-  informacaoImc.textContent = faixa.info || faixa.classificacao;
+  informacaoImc.textContent = faixa.info;
   let html = "";
   for (let i = 0; i < dados.length; i++) {
     const item = dados[i];
